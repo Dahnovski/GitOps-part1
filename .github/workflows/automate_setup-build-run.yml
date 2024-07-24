@@ -33,6 +33,9 @@ jobs:
           echo "Second command in terminal"
           echo "Application name: ${{ env.APPLICATION_NAME }}"
           echo "Third command in terminal (last)"
+
+      - name: Show our files in dir
+        run: ls -la
     
   my_building:
     runs-on: ubuntu-latest
