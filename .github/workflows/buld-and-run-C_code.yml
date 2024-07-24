@@ -1,0 +1,38 @@
+#-----------------------------
+#
+# This is Build and Run our C project with sorting types
+#
+#-----------------------------
+
+name: Build-and-run-project
+
+on: 
+  push: 
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+  
+    runs-on: ubuntu-latest
+
+    steps:
+        # 1) Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+        # 2) Set up GCC (GNU Compiler Collection)
+      - name: Set up GCC
+        run: sudo apt-get install -y gcc
+
+        # 3) Compile the C file
+      - name: Compile the C code(file)
+        run: gcc -o sorted_methods test1.c
+
+        # 4) Run our C file
+      - name: Running our executable file
+        run: ./sorted_methods
+        
+        
+      
