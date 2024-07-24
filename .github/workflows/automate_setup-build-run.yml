@@ -5,6 +5,10 @@
 #----------------------
 
 name: GitHub-Actions-basic-pipeline
+env:  
+  APPLICATION_NAME: "Sorting methods on C language"
+  # here we use vars which is vars of GitHub (SHA of our commits) | github.sha == our commit order
+  DEPLOY_PACKAGE_NAME    : "C project versions ${{ github.sha }}"
 
 on:
   push:
@@ -19,6 +23,13 @@ jobs:
     steps:
       - name: Printing greeting from TESTING using message in terminal
         run : echo "Welcome to testing job"
+
+      - name: Execute some commands
+        run : |
+          echo "First command in terminal"
+          echo "Secons command in terminal"
+          echo "Application name: ${{ env.APPLICATION_NAME }}"
+          echo "Third command in terminal (last)"
     
   my_building: 
     runs-on: ubuntu-latest
@@ -27,4 +38,7 @@ jobs:
     steps:
       - name: Printing message from BUILDING using message in terminal
         run : echo "Welcome to building job"
+
+      - name: Deployment codebase
+        run : "Deploy package name is ${{ env.DEPLOY_PACKAGE_NAME }}"
 
