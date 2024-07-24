@@ -1,14 +1,14 @@
 #----------------------
 # GitHub Actions task 1
 #
-# Copyleft (c) by Nazar Gavrilov 2024.  
+# Copyleft (c) by Nazar Gavrilov 2024.
 #----------------------
 
 name: GitHub-Actions-basic-pipeline
-env:  
+env:
   APPLICATION_NAME: "Sorting methods on C language"
   # here we use vars which is vars of GitHub (SHA of our commits) | github.sha == our commit order
-  DEPLOY_PACKAGE_NAME    : "C project versions ${{ github.sha }}"
+  DEPLOY_PACKAGE_NAME: "C project versions ${{ github.sha }}"
 
 on:
   push:
@@ -21,24 +21,29 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
       - name: Printing greeting from TESTING using message in terminal
-        run : echo "Welcome to testing job"
+        run: echo "Welcome to testing job"
 
       - name: Execute some commands
-        run : |
+        run: |
           echo "First command in terminal"
-          echo "Secons command in terminal"
+          echo "Second command in terminal"
           echo "Application name: ${{ env.APPLICATION_NAME }}"
           echo "Third command in terminal (last)"
     
-  my_building: 
+  my_building:
     runs-on: ubuntu-latest
-    needs  : [my_testing]
+    needs: [my_testing]
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: Printing message from BUILDING using message in terminal
-        run : echo "Welcome to building job"
+        run: echo "Welcome to building job"
 
       - name: Deployment codebase
-        run : "Deploy package name is ${{ env.DEPLOY_PACKAGE_NAME }}"
-
+        run: echo "Deploy package name is ${{ env.DEPLOY_PACKAGE_NAME }}"
