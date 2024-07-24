@@ -1,0 +1,29 @@
+#----------------------
+# GitHub Actions task 1
+#
+# Copyleft (c) by Nazar Gavrilov 2024.  
+#----------------------
+
+name: GitHub-Actions-basic-pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  my_testing:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Printing greeting from TESTING using message in terminal
+        run : echo "Welcome to testing job"
+    
+  my_building: 
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Printing message from BUILDING using message in terminal
+        run : echo "Welcome to building job"
+
