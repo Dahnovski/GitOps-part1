@@ -22,6 +22,7 @@ jobs:
     
   my_building: 
     runs-on: ubuntu-latest
+    needs  : [my_testing]
 
     steps:
       - name: Printing message from BUILDING using message in terminal
